@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.diegot.fletx.databinding.ActivityMainBinding
 import com.diegot.fletx.maps.MapActivity
@@ -38,7 +39,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun observeData(data: VehiclesUiModel) {
-        //binding.loadingView.isVisible = data.loading
+        binding.loadingView.isVisible = data.isLoading
         if(data.vehicles.isNotEmpty())
             showVehicles(data.vehicles)
     }
