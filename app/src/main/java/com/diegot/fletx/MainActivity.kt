@@ -6,6 +6,7 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.diegot.fletx.databinding.ActivityMainBinding
+import com.diegot.fletx.maps.MapActivity
 import com.diegot.fletx.uimodel.VehicleUiModel
 import com.diegot.fletx.uimodel.VehiclesUiModel
 import dagger.hilt.android.AndroidEntryPoint

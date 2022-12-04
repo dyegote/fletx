@@ -1,7 +1,8 @@
-package com.diegot.fletx
+package com.diegot.fletx.maps
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.diegot.fletx.R
 import com.diegot.fletx.uimodel.VehicleUiModel
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -42,6 +43,8 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
                     .position(it.location)
                     .title(it.placa))
             vehicleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(it.location, 10f))
+            vehicleMap.setInfoWindowAdapter(MapMarkerAdapter(this, it)
+            )
         }
     }
 }
