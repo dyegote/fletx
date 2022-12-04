@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun observeData(data: VehiclesUiModel) {
-        binding.loadingView.isVisible = data.isLoading
+        binding.swiperefresh.isRefreshing = data.isLoading
         if(data.vehicles.isNotEmpty())
             showVehicles(data.vehicles)
     }
@@ -55,6 +55,9 @@ class MainActivity : AppCompatActivity() {
         val layoutManagerVehicles = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         binding.recyclerView.apply {
             layoutManager = layoutManagerVehicles
+        }
+        binding.swiperefresh.setOnRefreshListener {
+            viewModel.getHoldersVehicle()
         }
     }
 
