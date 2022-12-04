@@ -1,5 +1,6 @@
 package com.diegot.fletx
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
@@ -56,6 +57,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun onItemVehicleClick(vehicle: VehicleUiModel) {
+        goToMapVehicle(vehicle)
+    }
 
+    private fun goToMapVehicle(vehicle: VehicleUiModel) {
+        Intent(this, MapActivity::class.java).apply {
+            flags = Intent.FLAG_ACTIVITY_SINGLE_TOP
+            putExtra(MapActivity.EXTRA_DATA_VEHICLE, vehicle)
+        }.let { apply { startActivity(it) } }
     }
 }

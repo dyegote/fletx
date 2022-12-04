@@ -8,6 +8,7 @@ import com.diegot.domain.domainservice.VehicleDomainService
 import com.diegot.domain.entity.DataVehicle
 import com.diegot.fletx.uimodel.VehicleUiModel
 import com.diegot.fletx.uimodel.VehiclesUiModel
+import com.google.android.gms.maps.model.LatLng
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -35,12 +36,19 @@ class VehicleViewModel @Inject constructor(private val domainService: VehicleDom
 
     private fun DataVehicle.toUiModel(): VehicleUiModel{
         return VehicleUiModel(
-            placa,
-            driver?.fullName ?: "Sin conductor",
-            thirdState.name,
-            trailer?.placa ?: "Sin trailer",
-            frontVehicle.url,
-            lonlat
+            placa = placa,
+            driverName = driver?.fullName ?: "Sin conductor",
+            status = thirdState.name,
+            placaTrailer = trailer?.placa ?: "Sin trailer",
+            imageUrl = frontVehicle.url,
+            location = parseLocation(lonlat)
         )
+    }
+
+    private fun parseLocation(lonlat: String): LatLng {
+        val matcher = Regex("(-?[0-9]{1,13}(\\.[0-9]*)?)")
+        val longitude = matcher.findAll(lonlat).elementAtOrNull(0)?.groupValues?.get(1)?.toDouble() ?: 0.0
+        val latitude = matcher.findAll(lonlat).elementAtOrNull(1)?.groupValues?.get(1)?.toDouble() ?: 0.0
+        return LatLng(latitude, longitude)
     }
 }
