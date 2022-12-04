@@ -6,5 +6,11 @@ import javax.inject.Inject
 
 class VehicleDomainService @Inject constructor(private val repository: VehicleRepository) {
 
-    fun getHoldersVehicle(): List<DataVehicle> = repository.getHoldersVehicle()
+    fun getHoldersVehicle(): List<DataVehicle> {
+        val vehicles = repository.getHoldersVehicle().toMutableList()
+        vehicles.forEach{
+            it.frontVehicle.url = it.frontVehicle.url.replace("prueba", "staging")
+        }
+        return vehicles.toList()
+    }
 }

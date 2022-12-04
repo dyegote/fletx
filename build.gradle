@@ -4,6 +4,7 @@ buildscript {
     ext.okhttpLoggingVersion = '4.7.2'
     ext.hiltVersion = '2.42'
     ext.lifecycleVersion = '2.4.1'
+    ext.glideVersion = '4.13.2'
 
     dependencies {
         classpath "com.google.dagger:hilt-android-gradle-plugin:$hiltVersion"

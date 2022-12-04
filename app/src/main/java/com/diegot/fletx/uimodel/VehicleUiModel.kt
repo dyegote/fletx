@@ -10,5 +10,6 @@ data class VehicleUiModel(
     val driverName: String = "",
     val status: String = "",
     val placaTrailer: String = "",
+    val imageUrl: String = "",
     val lonlat: String = ""
 )

@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.diegot.fletx.databinding.ItemVehicleBinding
 import com.diegot.fletx.uimodel.VehicleUiModel
 
@@ -36,6 +37,10 @@ class VehicleAdapter(private val onItemClickListener: (VehicleUiModel) -> Unit):
                 textViewStatus.text = vehicle.status
             }
 
+            Glide.with(itemView)
+                .load(vehicle.imageUrl)
+                .error(R.drawable.ic_default_vehicle)
+                .into(binding.imageViewVehicle)
         }
     }
 

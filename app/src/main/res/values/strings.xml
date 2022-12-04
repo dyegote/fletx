@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Fletx</string>
+    <string name="trailer_label">Trailer: </string>
 </resources>

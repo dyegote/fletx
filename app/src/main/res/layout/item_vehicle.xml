@@ -8,6 +8,7 @@
     android:layout_height="wrap_content"
     android:elevation="4dp"
     android:layout_margin="4dp"
+    app:cardCornerRadius="4dp"
     app:layout_constraintBottom_toTopOf="parent"
     app:layout_constraintTop_toTopOf="parent">
 
@@ -15,17 +16,24 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/imageViewVehicle"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:adjustViewBounds="true"
-            app:layout_constraintHeight_percent="0.5"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardImageViewVehicle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="4dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintVertical_bias="1.0"
-            tools:srcCompat="@tools:sample/avatars"/>
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <ImageView
+                android:id="@+id/imageViewVehicle"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                tools:srcCompat="@tools:sample/avatars"/>
+
+        </androidx.cardview.widget.CardView>
 
         <TextView
             android:id="@+id/textViewPlate"
@@ -34,7 +42,7 @@
             android:layout_marginTop="4dp"
             android:layout_marginStart="6dp"
             android:textSize="24sp"
-            app:layout_constraintStart_toEndOf="@id/imageViewVehicle"
+            app:layout_constraintStart_toEndOf="@id/cardImageViewVehicle"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="ABC123"/>
 
@@ -45,7 +53,7 @@
             android:layout_marginBottom="4dp"
             android:layout_marginStart="6dp"
             android:textSize="16sp"
-            app:layout_constraintStart_toEndOf="@id/imageViewVehicle"
+            app:layout_constraintStart_toEndOf="@id/cardImageViewVehicle"
             app:layout_constraintBottom_toTopOf="@id/textViewTrailer"
             tools:text="Diego Tobar"/>
 
@@ -56,8 +64,8 @@
             android:layout_marginBottom="4dp"
             android:layout_marginStart="6dp"
             android:textSize="16sp"
-            android:text="Trailer: "
-            app:layout_constraintStart_toEndOf="@id/imageViewVehicle"
+            android:text="@string/trailer_label"
+            app:layout_constraintStart_toEndOf="@id/cardImageViewVehicle"
             app:layout_constraintBottom_toBottomOf="parent"/>
 
         <TextView

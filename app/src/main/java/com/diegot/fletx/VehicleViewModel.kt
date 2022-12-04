@@ -39,6 +39,7 @@ class VehicleViewModel @Inject constructor(private val domainService: VehicleDom
             driver?.fullName ?: "Sin conductor",
             thirdState.name,
             trailer?.placa ?: "Sin trailer",
+            frontVehicle.url,
             lonlat
         )
     }
